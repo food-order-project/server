@@ -5,11 +5,12 @@ import { AppModule } from "./app.module";
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Add CORS configuration
+  // CORS yapılandırması
   app.enableCors({
-    origin: ["http://localhost:5173"],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    credentials: true,
+    origin: 'http://localhost:4000', // Frontend'in çalıştığı adres
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
   });
 
   // Keep existing validation pipe
