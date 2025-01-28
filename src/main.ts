@@ -7,10 +7,10 @@ async function bootstrap() {
 
   // CORS yapılandırması
   app.enableCors({
-    origin: 'http://localhost:4000', // Frontend'in çalıştığı adres
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
+    origin: "http://localhost:4000", // Frontend'in çalıştığı adres
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   });
 
   // Keep existing validation pipe
@@ -22,6 +22,8 @@ async function bootstrap() {
     })
   );
 
-  await app.listen(3000);
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  console.log(`Application is running on port ${port}`);
 }
 bootstrap();
