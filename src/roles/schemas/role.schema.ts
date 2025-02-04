@@ -38,7 +38,11 @@ RoleSchema.statics.ensureDefaultRoles = async function () {
       description: "Super admin with full access",
     },
     {
-      name: RoleType.CUSTOMER,
+      name: RoleType.CUSTOMER_PARENT,
+      description: "Customer with basic access",
+    },
+    {
+      name: RoleType.CUSTOMER_STUDENT,
       description: "Customer with basic access",
     },
   ];
