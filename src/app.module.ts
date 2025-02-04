@@ -6,6 +6,7 @@ import { UsersModule } from "./users/users.module";
 import { AuthModule } from "./auth/auth.module";
 import { RolesModule } from "./roles/roles.module";
 import { ConfigModule } from "@nestjs/config";
+import { MealsModule } from "./meals/meals.module";
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ConfigModule } from "@nestjs/config";
     UsersModule,
     AuthModule,
     RolesModule,
+    MealsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
