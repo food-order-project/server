@@ -32,7 +32,7 @@ export class MealsController {
   constructor(private readonly mealsService: MealsService) {}
 
   @Post()
-  // @Roles(RoleType.ADMIN)
+  @Roles(RoleType.MANAGER)
   @ApiOperation({ summary: "Create a new meal" })
   @ApiBody({
     schema: {
@@ -66,7 +66,7 @@ export class MealsController {
     status: 201,
     description: "The meal has been successfully created.",
   })
-  // @ApiResponse({ status: 401, description: "Unauthorized." })
+  @ApiResponse({ status: 401, description: "Unauthorized." })
   @ApiResponse({ status: 403, description: "Forbidden - Requires Admin Role." })
   create(@Body() createMealDto: CreateMealDto) {
     console.log(createMealDto);
