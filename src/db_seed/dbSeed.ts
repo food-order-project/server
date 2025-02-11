@@ -5,6 +5,7 @@ import { users } from "./users";
 import { RoleSchema } from "../roles/schemas/role.schema";
 import { hash } from "bcrypt";
 import { Schema } from "mongoose";
+import { AllergenSchema } from "../allergens/schemas/allergen.schema";
 
 // Load environment variables
 config();
@@ -83,6 +84,54 @@ const seedUsers = async (createdRoles: any[]) => {
   }
 };
 
+const seedAllergens = async () => {
+  try {
+    const connection = await connect(
+      process.env.MONGODB_URI || "mongodb://localhost:27017/food"
+    );
+
+    const Allergen = connection.model("Allergen", AllergenSchema);
+
+    // Clear existing allergens
+    await Allergen.deleteMany({});
+
+    const allergens = [
+      {
+        name: 'milk',
+        description: 'Süt ve süt ürünleri',
+        isActive: true,
+      },
+      {
+        name: 'nuts',
+        description: 'Kuruyemişler',
+        isActive: true,
+      },
+      {
+        name: 'eggs',
+        description: 'Yumurta',
+        isActive: true,
+      },
+      {
+        name: 'gluten',
+        description: 'Gluten içeren tahıllar',
+        isActive: true,
+      },
+      {
+        name: 'fish',
+        description: 'Balık ve balık ürünleri',
+        isActive: true,
+      },
+    ];
+
+    // Insert allergens
+    await Allergen.insertMany(allergens);
+    console.log("✅ Allergens seeded successfully");
+  } catch (error) {
+    console.error("❌ Error seeding allergens:", error);
+    throw error;
+  }
+};
+
 const seedDatabase = async () => {
   try {
     // First seed roles and get the created role documents
@@ -90,6 +139,9 @@ const seedDatabase = async () => {
 
     // Then seed users with the role IDs
     await seedUsers(createdRoles);
+
+    // Finally seed allergens
+    await seedAllergens();
 
     console.log("🌱 Database seeding completed successfully");
   } catch (error) {
