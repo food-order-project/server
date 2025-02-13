@@ -7,7 +7,7 @@ import { AuthModule } from "./auth/auth.module";
 import { RolesModule } from "./roles/roles.module";
 import { ConfigModule } from "@nestjs/config";
 import { MealsModule } from "./meals/meals.module";
-import { ConfigsModule } from "./configs/configs.module";
+import { EnumsModule } from "./enums/enums.module";
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { ConfigsModule } from "./configs/configs.module";
     AuthModule,
     RolesModule,
     MealsModule,
-    ConfigsModule,
+    EnumsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
