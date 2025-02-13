@@ -7,7 +7,7 @@ import { AuthModule } from "./auth/auth.module";
 import { RolesModule } from "./roles/roles.module";
 import { ConfigModule } from "@nestjs/config";
 import { MealsModule } from "./meals/meals.module";
-import { AllergensModule } from "./allergens/allergens.module";
+import { ConfigsModule } from "./configs/configs.module";
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { AllergensModule } from "./allergens/allergens.module";
     AuthModule,
     RolesModule,
     MealsModule,
-    AllergensModule,
+    ConfigsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
