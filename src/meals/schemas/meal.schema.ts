@@ -34,7 +34,7 @@ export class Meal {
   @Prop({ default: 0 })
   calories: number;
 
-  @Prop({ type: [String], enum: allergens.map(allergen => allergen.id) })
+  @Prop({ type: [String], enum: allergens.map(allergen => allergen.name) })
   allergens: string[];
 }
 
