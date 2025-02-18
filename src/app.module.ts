@@ -5,13 +5,13 @@ import { AppService } from "./app.service";
 import { UsersModule } from "./modules/users/users.module";
 import { AuthModule } from "./modules/auth/auth.module";
 import { RolesModule } from "./modules/roles/roles.module";
-import { ConfigModule } from "@nestjs/config";
+import { ConfigModule as NestConfigModule } from "@nestjs/config";
 import { MealsModule } from "./modules/meals/meals.module";
-import { EnumsModule } from "./config/enums/enums.module";
+import { ConfigModule } from "./modules/getConfig/config.module";
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    NestConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       user: process.env.MONGODB_USER,
       pass: process.env.MONGODB_PASSWORD,
@@ -21,7 +21,7 @@ import { EnumsModule } from "./config/enums/enums.module";
     AuthModule,
     RolesModule,
     MealsModule,
-    EnumsModule,
+    ConfigModule,
   ],
   controllers: [AppController],
   providers: [AppService],
