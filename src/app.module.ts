@@ -9,6 +9,7 @@ import { ConfigModule as NestConfigModule } from "@nestjs/config";
 import { MealsModule } from "./modules/meals/meals.module";
 import { ConfigModule } from "./modules/getConfig/config.module";
 import { MealPlannerModule } from "./modules/meal-planner/meal-planner.module";
+import { CompaniesModule } from "./modules/companies/companies.module";
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { MealPlannerModule } from "./modules/meal-planner/meal-planner.module";
     MealsModule,
     ConfigModule,
     MealPlannerModule,
+    CompaniesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
