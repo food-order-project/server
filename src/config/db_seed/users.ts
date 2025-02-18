@@ -1,4 +1,4 @@
-import { RoleType } from "../roles/enums/role.enum";
+import { RoleType } from "../../modules/roles/enums/role.enum";
 
 export const users = [
   {

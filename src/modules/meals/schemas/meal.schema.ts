@@ -1,5 +1,8 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
+import { allergens } from "../../../config/enums/allergens";
+import { dietaryTypes } from "../../../config/enums/dietary-types";
+import { mealCategory } from "../../../config/enums/meal-category";
 
 export type MealDocument = Meal & Document;
 
@@ -13,16 +16,12 @@ export class Meal {
 
   @Prop({
     required: true,
-    enum: ["main_course", "soup", "salad", "dessert", "beverage"],
+    enum: mealCategory,
   })
   category: string;
 
-  @Prop({ type: Object, default: { vegetarian: false, vegan: false } })
-  dietaryType: {
-    vegetarian: boolean;
-    vegan: boolean;
-  };
-
+  @Prop({ type: Object, default: {} })
+  @Prop({ type: [String], enum: dietaryTypes })
   @Prop({ required: false })
   imageUrl: string;
 
@@ -35,7 +34,7 @@ export class Meal {
   @Prop({ default: 0 })
   calories: number;
 
-  @Prop({ type: [String], enum: ["milk", "nuts", "eggs", "gluten", "fish"] })
+  @Prop({ type: [String], enum: allergens })
   allergens: string[];
 }
 

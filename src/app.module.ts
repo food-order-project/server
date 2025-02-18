@@ -2,15 +2,18 @@ import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { UsersModule } from "./users/users.module";
-import { AuthModule } from "./auth/auth.module";
-import { RolesModule } from "./roles/roles.module";
-import { ConfigModule } from "@nestjs/config";
-import { MealsModule } from "./meals/meals.module";
+import { UsersModule } from "./modules/users/users.module";
+import { AuthModule } from "./modules/auth/auth.module";
+import { RolesModule } from "./modules/roles/roles.module";
+import { ConfigModule as NestConfigModule } from "@nestjs/config";
+import { MealsModule } from "./modules/meals/meals.module";
+import { ConfigModule } from "./modules/getConfig/config.module";
+import { MealPlannerModule } from "./modules/meal-planner/meal-planner.module";
+import { CompaniesModule } from "./modules/companies/companies.module";
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    NestConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       user: process.env.MONGODB_USER,
       pass: process.env.MONGODB_PASSWORD,
@@ -20,6 +23,9 @@ import { MealsModule } from "./meals/meals.module";
     AuthModule,
     RolesModule,
     MealsModule,
+    ConfigModule,
+    MealPlannerModule,
+    CompaniesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
