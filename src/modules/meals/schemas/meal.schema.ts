@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
 import { allergens } from "../../../config/enums/allergens";
 import { dietaryTypes } from "../../../config/enums/dietary-types";
-import { mealCategory } from "src/config/enums/meal-category";
+import { mealCategory } from "../../../config/enums/meal-category";
 
 export type MealDocument = Meal & Document;
 
