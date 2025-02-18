@@ -1,0 +1,18 @@
+# Workflow'un adını belirleyin
+name: Delete Branch After Merge
+
+# Tetikleyici olayı tanımlayın
+on:
+  pull_request:
+    types: [closed]
+
+# İşleri tanımlayın
+jobs:
+  delete-branch:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Delete merged branch
+        uses: koj-co/delete-merged-branch@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
