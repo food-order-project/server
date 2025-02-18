@@ -4,30 +4,4 @@ export interface Allergen {
  
 }
 
-export const allergens: Allergen[] = [
-  {
-    
-    name: 'Milk',
-   
-  },
-  {
-    
-    name: 'Nuts',
-    
-  },
-  {
-    
-    name: 'Eggs',
-    
-  },
-  {
-   
-    name: 'Gluten',
-   
-  },
-  {
-    
-    name: 'Fish',
-    
-  },
-]; 
+export const allergens = ['Gluten', 'Peanut', 'Dairy', 'Soy']; 

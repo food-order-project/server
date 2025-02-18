@@ -4,15 +4,4 @@ export interface DietaryType {
   
 }
 
-export const dietaryTypes: DietaryType[] = [
-  {
-   
-    name: 'Vegetarian',
-    
-  },
-  {
-   
-    name: 'Vegan',
-    
-  },
-]; 
+export const dietaryTypes = ['Vegan', 'Vegetarian', 'Pescatarian', 'Keto']; 

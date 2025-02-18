@@ -13,14 +13,8 @@ export class Meal {
   @Prop({ required: true })
   description: string;
 
-  @Prop({
-    required: true,
-    enum: ["main_course", "soup", "salad", "dessert", "beverage"],
-  })
-  category: string;
-
-  @Prop({ type: Object, default: {} })
-  dietaryTypes: Record<string, boolean>;
+   @Prop({ type: [String], enum: dietaryTypes })
+  dietaryTypes: string[];
 
   @Prop({ required: false })
   imageUrl: string;
@@ -34,7 +28,7 @@ export class Meal {
   @Prop({ default: 0 })
   calories: number;
 
-  @Prop({ type: [String], enum: allergens.map(allergen => allergen.name) })
+  @Prop({ type: [String], enum: allergens })
   allergens: string[];
 }
 
