@@ -2,10 +2,9 @@ import { connect, disconnect } from "mongoose";
 import { config } from "dotenv";
 import { roles } from "./roles";
 import { users } from "./users";
-import { RoleSchema } from "../roles/schemas/role.schema";
+import { RoleSchema } from "../../modules/roles/schemas/role.schema";
 import { hash } from "bcrypt";
 import { Schema } from "mongoose";
-
 
 // Load environment variables
 config();
@@ -93,7 +92,6 @@ const seedDatabase = async () => {
     await seedUsers(createdRoles);
 
     // Finally seed allergens
-    
 
     console.log("🌱 Database seeding completed successfully");
   } catch (error) {
