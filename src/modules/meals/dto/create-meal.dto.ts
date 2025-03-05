@@ -8,17 +8,8 @@ import {
   IsUrl,
   ValidateNested,
 } from "class-validator";
-import { Type } from "class-transformer";
-
-class DietaryTypeDto {
-  @IsBoolean()
-  @IsOptional()
-  vegetarian?: boolean;
-
-  @IsBoolean()
-  @IsOptional()
-  vegan?: boolean;
-}
+import { mealCategory } from "../../../config/enums/meal-category";
+import { allergens } from "../../../config/enums/allergens";
 
 export class CreateMealDto {
   @IsString()
@@ -27,12 +18,14 @@ export class CreateMealDto {
   @IsString()
   description: string;
 
-  @IsEnum(["main_course", "soup", "salad", "dessert", "beverage"])
+  // @IsEnum(mealCategory)
+  @IsString()
   category: string;
 
-  @ValidateNested()
-  @Type(() => DietaryTypeDto)
-  dietaryType: DietaryTypeDto;
+  @IsArray()
+  // @IsEnum(allergens)
+  @IsOptional()
+  dietaryType: string[];
 
   @IsUrl()
   imageUrl: string;
@@ -49,7 +42,7 @@ export class CreateMealDto {
   calories?: number;
 
   @IsArray()
-  @IsEnum(["milk", "nuts", "eggs", "gluten", "fish"], { each: true })
+  // @IsEnum(allergens)
   @IsOptional()
   allergens?: string[];
 }
