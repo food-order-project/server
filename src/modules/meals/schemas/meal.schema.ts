@@ -14,14 +14,11 @@ export class Meal {
   @Prop({ required: true })
   description: string;
 
-  @Prop({
-    required: true,
-    enum: mealCategory,
-  })
+  @Prop({ required: true })
   category: string;
 
-  @Prop({ type: Object, default: {} })
-  @Prop({ type: [String], enum: dietaryTypes })
+  @Prop({ type: String, default: "" })
+  // @Prop({ type: [String], enum: dietaryTypes })
   @Prop({ required: false })
   imageUrl: string;
 
@@ -34,8 +31,11 @@ export class Meal {
   @Prop({ default: 0 })
   calories: number;
 
-  @Prop({ type: [String], enum: allergens })
+  @Prop({ type: [String] })
   allergens: string[];
+
+  @Prop({ type: [String] })
+  dietaryTypes: string[];
 }
 
 export const MealSchema = SchemaFactory.createForClass(Meal);

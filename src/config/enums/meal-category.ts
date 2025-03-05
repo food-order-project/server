@@ -1,7 +1,7 @@
 export const mealCategory = [
-  "main_course",
-  "soup",
-  "salad",
-  "dessert",
-  "beverage",
+  "Main Course",
+  "Soup",
+  "Salad",
+  "Dessert",
+  "Beverage",
 ];

@@ -97,7 +97,7 @@ export class MealsController {
   }
 
   @Patch(":id")
-  @Roles(RoleType.ADMIN)
+  @Roles(RoleType.MANAGER)
   @ApiOperation({ summary: "Update a meal" })
   @ApiParam({
     name: "id",
@@ -140,6 +140,9 @@ export class MealsController {
   @ApiResponse({ status: 403, description: "Forbidden - Requires Admin Role." })
   @ApiResponse({ status: 404, description: "Meal not found." })
   update(@Param("id") id: string, @Body() updateMealDto: UpdateMealDto) {
+    console.log("id : ", id);
+    console.log("updateMEal : ", updateMealDto);
+    
     return this.mealsService.update(id, updateMealDto);
   }
 
